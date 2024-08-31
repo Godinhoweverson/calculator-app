@@ -1,44 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+
   <title>Frontend Mentor | Tip calculator app</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
+
 <body>
-
-  Bill
-
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
-
-  Number of People
-
-  Tip Amount
-  / person
-
-  Total
-  / person
-
-  Reset
-  
+  <div class="title">
+    <h1>SPLI</h1>
+    <h1>TTER</h1>
+  </div>
+  <main class="flex">
+    <section id="calculator" class="flex">
+      <div id="bill" class="calc">
+        <label>Bill</label>
+        <input type="number" class="bill-value">
+      </div>
+      <div id="select-tips" class="calc">
+        <label>Select Tip %</label>
+        <div class="tips">
+          <button id="btn-tip" class="tip- 5">5%</button>
+          <button id="btn-tip" class="tip-10">10%</button>
+          <button id="btn-tip" class="tip-15">15%</button>
+          <button id="btn-tip" class="tip-25">25%</button>
+          <button id="btn-tip" class="tip-50">50%</button>
+          <button id="btn-tip" class="custon">Custon</button>
+        </div>
+      </div>
+      <div id="number-people" class="calc">
+        <label>Number of People</label>
+        <input type="number">
+      </div>
+    </section>
+    <section id="results" class="flex">
+      <div class="tip-amount"></div>
+      <div class="total-person"></div>
+      <div class="btn">
+        <button id="btn-reset">Reset</button>
+      </div>
+    </section>
+  </main>
   <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
     Coded by <a href="#">Your Name Here</a>.
   </div>
 </body>
+
 </html>
