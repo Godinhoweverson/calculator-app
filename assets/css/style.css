@@ -11,6 +11,14 @@ body{
   flex-direction: column;
   background-color: #9fe8df;
   height: 100vh;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+}
+
+.font-value{
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 24px;
 }
 
 .flex{
@@ -21,9 +29,8 @@ body{
 
 .title{
   letter-spacing: 10px;
-  margin-bottom: 100px;
+  margin-bottom: 88px;
 }
-
 
 main{
   flex-direction: row;
@@ -34,13 +41,113 @@ main{
 }
 
 #calculator{
+  justify-content: space-between !important;
+  flex-direction: column;
   width: 379px;
   height: 388px;
-  background-color: #9fe8df;
+  margin-right: 39.66px;
+}
+
+.calc{
+  flex-direction:column;
+  align-items: flex-start !important;
+  width: 100%;
+  color: hsl(186, 14%, 43%);
+}
+
+/* Wrapper around the input and icon */
+.input-wrapper {
+  width: 100%;
+  height: 48px;
+  background-color: hsl(189, 41%, 97%);
+  margin-top: 6px;
+  padding-right: 10px; /* Space for text on the right */
+}
+
+/* SVG icon styling */
+.input-wrapper svg {
+  margin-left: 10px;
+}
+
+/* Input field styling */
+.input-value {
+  width: 100%;
+  flex-grow: 1;
+  padding: 10px;
+  color: hsl(183, 100%, 15%);
+  border: none;
+  text-align: right; /* Aligns the text to the right */
+  background-color: transparent; /* Makes sure the input's background is transparent */
+}
+
+.bill-value:focus {
+  outline: none; /* Removes the default focus outline */
+}
+
+.tips{
+  flex-wrap: wrap;
+}
+
+#btn-tip{
+  width: 117px;
+  height: 48px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+
+}
+
+.tip{
+  background-color: hsl(183, 100%, 15%);
+  color: hsl(0, 0%, 100%);
+}
+
+.custon{
+  background-color: hsl(189, 41%, 97%);
+  color:hsl(186, 14%, 43%);
 }
 
 #results{
+  flex-direction: column;
   width: 413px;
   height: 417px;
-  background-color: #05312c;
+  background-color: hsl(183, 100%, 15%);
+  border-radius: 15px;
+}
+
+.amount-box{
+  display: flex;
+  justify-content:space-between;
+  align-items: flex-start;
+  flex-direction: row;
+  height: 71px;
+  width: 333px;
+}
+.person-box{
+  margin-top: 10px;
+  height: 44px;
+  width: 98px;
+}
+
+.amount-value {
+  font-size: 48px;
+  text-align: center;
+  color: hsl(172, 67%, 45%);
+  height: 71px;
+}
+
+.amount{
+  color: hsl(0, 0%, 100%);
+}
+
+.person{
+  color: hsl(183, 15%, 56%);;
+}
+
+#btn-reset{
+  height: 48px;
+  margin-top: 150px;
+  width: 333px;
+  background-color: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
+  border-radius: 5px;
 }
