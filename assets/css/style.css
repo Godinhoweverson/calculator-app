@@ -19,7 +19,7 @@ body{
   font-family: "Space Mono", monospace;
   font-weight: 700;
   font-size: 24px;
-}
+} 
 
 .flex{
   display: flex;
@@ -45,7 +45,7 @@ main{
   flex-direction: column;
   width: 379px;
   height: 388px;
-  margin-right: 39.66px;
+  margin-right: 50px;
 }
 
 .calc{
@@ -62,6 +62,7 @@ main{
   background-color: hsl(189, 41%, 97%);
   margin-top: 6px;
   padding-right: 10px; /* Space for text on the right */
+  border-radius: 5px;
 }
 
 /* SVG icon styling */
@@ -86,6 +87,7 @@ main{
 
 .tips{
   flex-wrap: wrap;
+  margin-top: 12px;
 }
 
 #btn-tip{
@@ -121,6 +123,7 @@ main{
   flex-direction: row;
   height: 71px;
   width: 333px;
+  margin-bottom: 30px;
 }
 .person-box{
   margin-top: 10px;
@@ -145,9 +148,48 @@ main{
 
 #btn-reset{
   height: 48px;
-  margin-top: 150px;
+  margin-top: 100px;
   width: 333px;
   background-color: hsl(172, 67%, 45%);
   color: hsl(183, 100%, 15%);
   border-radius: 5px;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 900px) {
+  main {
+    flex-direction: column !important;
+    width: 375px;
+    height: 789px;
+  }
+  #calculator{
+    width: 311px;
+    margin-right: 0px;
+  }
+  #results{
+    width: 327px;
+    height: 257px;
+    margin-top: 32px;
+  }
+
+  .input-wrapper{
+    padding: 0;
+  }
+
+  #btn-tip{
+    width:146.63px
+  }
+
+  .amount-box{
+    margin-bottom: 20px;
+    width: 281px;
+  }
+
+  #btn-reset{
+    margin: 0;
+    width: 281px;
+  }
+
 }
