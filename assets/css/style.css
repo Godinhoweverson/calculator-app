@@ -103,9 +103,15 @@ main{
   color: hsl(0, 0%, 100%);
 }
 
-.custon{
-  background-color: hsl(189, 41%, 97%);
-  color:hsl(186, 14%, 43%);
+#custon{
+  width: 100px;
+  height: 26px;
+  background-color: transparent; 
+  padding: 10px;
+}
+
+#custon::placeholder{
+  color:hsl(180, 18%, 40%);
 }
 
 #results{
