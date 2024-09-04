@@ -1,24 +1,33 @@
 const billInput = document.getElementById('billInput')
 const peopleInput = document.getElementById('peopleInput')
 const btnTips = [...document.querySelectorAll('.tip')]
-const btnCuston = document.getElementById('custon')
+const btnCustom = document.getElementById('custom')
+const inputWrapper = document.querySelector('.input-wrapper')
+const borderNumberPeople = document.querySelector('.borderNumberPeople')
+const peopleLabelBox = document.querySelector('.people-label-box')
+const billLabelBox = document.querySelector('.bill-label-box')
 
-let tipsOn = false
+let tipsOn
 let tips
-let custon
+let custom
 let numberPerson
 let bill
+
+billInput.addEventListener('change',function() {
+    bill = billInput.value
+    incrementTips() 
+})
+
 
 btnTips.forEach((btn) =>{
     btn.addEventListener('click', function () {
     tips = btn.textContent
-    tipsOn = true
     incrementTips() 
    } )
 })
  
-btnCuston.addEventListener('change',function() {
-    custon = btnCuston.value
+btnCustom.addEventListener('change',function() {
+    custom = btnCustom.value
     incrementTips() 
 })
 
@@ -27,14 +36,37 @@ peopleInput.addEventListener('change',function() {
     incrementTips() 
 })
 
-billInput.addEventListener('change',function() {
-    bill = billInput.value
-    incrementTips() 
-})
 const incrementTips = () =>{
-    if(tipsOn){
-        console.log(bill)
-    }else{
-       console.log(custon) 
+    try {
+        if (bill) {
+            if (tips) {
+                console.log(bill);
+                console.log(tips);
+            } else if (custom) { 
+                console.log(bill);
+                console.log(custom);
+            }
+        } else {
+            inputWrapper.style.border = '2px solid #E17457'
+            borderNumberPeople.style.border = '2px solid #E17457'
+            let label = document.createElement('label')
+            label.innerHTML = "Can't be zero"
+            label.style.color = '#E17457'
+            peopleLabelBox.appendChild(label)
+            peopleLabelBox.style.display = 'flex'
+            peopleLabelBox.style.justifyContent = 'space-between';
+            peopleLabelBox.style.width = '100'
+            console.log('The bill is empty');
+        }
+    } catch (error) { // Include error object to log the error
+        console.log('An error occurred:', error.message);
     }
+    // if(tips){
+    //     if(bill)
+    //     console.log(bill)
+    //     console.log(tips)
+    // }else if(custom){
+    //     console.log(bill)
+    //    console.log(custom) 
+    // }
 }

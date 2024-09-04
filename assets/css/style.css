@@ -79,6 +79,7 @@ main{
   border: none;
   text-align: right; /* Aligns the text to the right */
   background-color: transparent; /* Makes sure the input's background is transparent */
+  
 }
 
 .bill-value:focus {
@@ -103,14 +104,14 @@ main{
   color: hsl(0, 0%, 100%);
 }
 
-#custon{
+#custom{
   width: 100px;
   height: 26px;
   background-color: transparent; 
   padding: 10px;
 }
 
-#custon::placeholder{
+#custom::placeholder{
   color:hsl(180, 18%, 40%);
 }
 
