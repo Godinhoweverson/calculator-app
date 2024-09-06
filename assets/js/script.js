@@ -6,21 +6,26 @@ const inputWrapper = document.querySelector('.input-wrapper')
 const inputValue = document.querySelector('.input-value')
 const borderNumberPeople = document.querySelector('.borderNumberPeople')
 const peopleLabelBox = document.querySelector('.people-label-box')
+const tipAmount = document.getElementById('tip-amount')
+const totalAmount = document.getElementById('total-amount')
+const reset = document.getElementById('btn-reset')
 
-let tipsOn
+
 let tips
 let custom
 let numberPerson
 let bill
 
+let emptyFieldExecuted = null
 
+let label
 const emptyField = () => {
       //Change border of input 
       inputWrapper.style.border = '2px solid #E17457'
       borderNumberPeople.style.border = '2px solid #E17457'
 
       //Create a new label for both inputs
-      let label = document.createElement('label')
+      label = document.createElement('label')
       label.innerHTML = "Can't be zero"
       label.style.color = '#E17457'
 
@@ -32,7 +37,24 @@ const emptyField = () => {
       bill = ''
       tips = ''
       custom = ''
+      emptyFieldExecuted = true
 }
+
+const filledField = () => {
+    //Change border of input 
+    inputWrapper.style.border = ''
+    borderNumberPeople.style.border = ''
+     // Remove the label if it exists
+     if (label) {
+        label.remove();
+        label = null;
+    }
+    btnTips.forEach((btn) =>{
+        btnTips.value = ''
+        btn.style.backgroundColor = 'hsl(183, 100%, 15%)'
+    })
+}
+
 
 // Catch the Bill value
 billInput.addEventListener('change',function() {
@@ -40,17 +62,27 @@ billInput.addEventListener('change',function() {
     incrementTips() 
 })
 
-// Catch the Select Tip value
-btnTips.forEach((btn) =>{
+let selectedBtn = null;
+
+btnTips.forEach((btn) => {
     btn.addEventListener('click', function () {
-    btn.style.backgroundColor = '#26C2AE'
-    tips = btn.textContent
-    incrementTips() 
-   } )
-})
- 
+        if (selectedBtn) {
+            btnCustom.value = ''
+            selectedBtn.style.backgroundColor = ''; // reset background
+        }
+        selectedBtn = btn;
+
+        btn.style.backgroundColor = '#26C2AE';
+        tips = btn.textContent;
+        incrementTips();
+    });
+});
+
 // Catch the Custom Tip value
 btnCustom.addEventListener('change',function() {
+    btnTips.forEach((btn) =>{
+        btn.style.backgroundColor = 'hsl(183, 100%, 15%)'
+    })
     custom = btnCustom.value
     incrementTips() 
 })
@@ -61,31 +93,60 @@ peopleInput.addEventListener('change',function() {
     incrementTips() 
 })
 
+
+const calculateTip = (value) =>{
+    let porcentageValue = (value / 100) * Number(bill)
+    let tipAmountPerPerson = porcentageValue / Number(numberPerson)
+    let totalPerPerson = (porcentageValue +  Number(bill)) / Number(numberPerson)
+    tipAmount.innerHTML = `$${Math.trunc(tipAmountPerPerson)}`
+    totalAmount.innerHTML = `$${Math.trunc(totalPerPerson)}`
+}
+
 const incrementTips = () =>{
     try {
         if (bill) {
-            if (tips && numberPerson) {
-                let tip = Number(tips.replace('%', ''))
-                let porcentageValue = (tip / 100) * Number(bill)
-                let tipAmount = porcentageValue / Number(numberPerson)
-                console.log(tipAmount);
-                
+            if(emptyFieldExecuted){filledField()}
+                if (tips && numberPerson) {
+                    let tip = Number(tips.replace('%', ''))
+                    calculateTip(tip)
+                    filledField()
             } else if (custom) { 
-                console.log(bill);
-                console.log(custom);
+                if(custom && numberPerson){
+                    calculateTip(custom)
+                    filledField()
+                }
             }
         } else {
-          emptyField()
+            if(!emptyFieldExecuted){
+                emptyField()
+            }
          }  
     } catch (error) { // Include error object to log the error
         console.log('An error occurred:', error.message);
     }
-    // if(tips){
-    //     if(bill)
-    //     console.log(bill)
-    //     console.log(tips)
-    // }else if(custom){
-    //     console.log(bill)
-    //    console.log(custom) 
-    // }
 }
+
+
+const btnReset = () =>{
+    reset.addEventListener('click', ()=>{
+
+         billInput.value = '';
+         btnCustom.value = '';
+         peopleInput.value = '';
+ 
+         tipAmount.innerHTML = '$0';
+         totalAmount.innerHTML = '$0';
+ 
+       
+         btnTips.forEach((btn) => {
+             btn.style.backgroundColor = 'hsl(183, 100%, 15%)'; 
+ 
+         });
+         custom = '';
+         tips = null;
+         selectedBtn = null;
+    })
+}
+
+
+btnReset()
