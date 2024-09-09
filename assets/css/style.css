@@ -9,7 +9,7 @@ body{
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #9fe8df;
+  background-color: hsl(185, 41%, 84%);
   height: 100vh;
   font-family: "Space Mono", monospace;
   font-weight: 700;

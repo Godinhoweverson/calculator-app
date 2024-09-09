@@ -18,6 +18,28 @@ let bill
 
 let emptyFieldExecuted = null
 
+const btnReset = () =>{
+    reset.addEventListener('click', () => {
+
+        billInput.value = '';
+        btnCustom.value = '';
+        peopleInput.value = '';
+
+
+        tipAmount.innerHTML = '$0';
+        totalAmount.innerHTML = '$0';
+
+        btnTips.forEach((btn) => {
+            btn.style.backgroundColor = 'hsl(183, 100%, 15%)';
+       
+        });
+        custom = '';
+        tips = null;
+        selectedBtn = null;  
+        window.location.reload()
+    });
+}
+
 let label
 const emptyField = () => {
       //Change border of input 
@@ -34,6 +56,11 @@ const emptyField = () => {
       peopleLabelBox.style.justifyContent = 'space-between';
       peopleLabelBox.style.width = '100'
 
+      btnTips.forEach((btn) =>{
+        btnTips.value = ''
+        btn.style.backgroundColor = 'hsl(183, 100%, 15%)'
+    })
+
       bill = ''
       tips = ''
       custom = ''
@@ -49,10 +76,6 @@ const filledField = () => {
         label.remove();
         label = null;
     }
-    btnTips.forEach((btn) =>{
-        btnTips.value = ''
-        btn.style.backgroundColor = 'hsl(183, 100%, 15%)'
-    })
 }
 
 
@@ -71,7 +94,6 @@ btnTips.forEach((btn) => {
             selectedBtn.style.backgroundColor = ''; // reset background
         }
         selectedBtn = btn;
-
         btn.style.backgroundColor = '#26C2AE';
         tips = btn.textContent;
         incrementTips();
@@ -125,28 +147,5 @@ const incrementTips = () =>{
         console.log('An error occurred:', error.message);
     }
 }
-
-
-const btnReset = () =>{
-    reset.addEventListener('click', ()=>{
-
-         billInput.value = '';
-         btnCustom.value = '';
-         peopleInput.value = '';
- 
-         tipAmount.innerHTML = '$0';
-         totalAmount.innerHTML = '$0';
- 
-       
-         btnTips.forEach((btn) => {
-             btn.style.backgroundColor = 'hsl(183, 100%, 15%)'; 
- 
-         });
-         custom = '';
-         tips = null;
-         selectedBtn = null;
-    })
-}
-
 
 btnReset()
