@@ -63,7 +63,7 @@ const emptyField = () => {
 
       bill = ''
       tips = ''
-      custom = ''
+      custom.value = ''
       emptyFieldExecuted = true
 }
 
@@ -104,9 +104,11 @@ btnTips.forEach((btn) => {
 btnCustom.addEventListener('change',function() {
     btnTips.forEach((btn) =>{
         btn.style.backgroundColor = 'hsl(183, 100%, 15%)'
+        btn.value = 0
     })
     custom = btnCustom.value
     incrementTips() 
+    calculateTip(custom)
 })
 
 // Catch the number of people value
@@ -127,11 +129,13 @@ const calculateTip = (value) =>{
 const incrementTips = () =>{
     try {
         if (bill) {
-            if(emptyFieldExecuted){filledField()}
-                if (tips && numberPerson) {
-                    let tip = Number(tips.replace('%', ''))
-                    calculateTip(tip)
-                    filledField()
+            if(emptyFieldExecuted){
+                filledField()
+            }
+            if (tips && numberPerson) {
+                let tip = Number(tips.replace('%', ''))
+                calculateTip(tip)
+                filledField()
             } else if (custom) { 
                 if(custom && numberPerson){
                     calculateTip(custom)
